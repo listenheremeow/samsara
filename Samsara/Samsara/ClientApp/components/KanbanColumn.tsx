@@ -25,7 +25,7 @@ export class KanbanColumn extends React.Component<KanbanColumnProps, KanbanColum
 
     public render() {
         let contents = this.state.loading
-            ? <p><em>Loading...</em></p>
+            ? <div className='loader'></div>
             : KanbanColumn.renderKanbanColumn(this.props.id, this.state.stories);
 
         return contents;

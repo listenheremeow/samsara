@@ -22,7 +22,7 @@ export class Kanban extends React.Component<RouteComponentProps<{}>, KanbanExamp
 
     public render() {
         let contents = this.state.loading
-            ? <p><em>Loading...</em></p>
+            ? <div className='loader'></div>
             : Kanban.renderKanbanBoard(this.state.columns);
 
         return <div>
@@ -35,7 +35,7 @@ export class Kanban extends React.Component<RouteComponentProps<{}>, KanbanExamp
         return <table className='table'>
             <thead>
                 <tr>
-                    {columns.map(column => <th key={column.id}>{column.name}</th>)}
+                    {columns.map(column => <th key={column.id} className='kanban-columnHeader'>{column.name}</th>)}
                 </tr>
             </thead>
             <tbody>

@@ -1,3 +1,32 @@
+/* 
+    island: #2bb7e0;
+    violet: #a35398;
+    lime: #bad636;
+    lemon: #ffe800;
+    tangerine: #ffad26;
+    punch: #eb4d97;
+*/
+
+.loader {
+    display: inline-block;
+    border: 16px solid #eee;
+    border-top: 16px solid #446;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 .main-nav li .glyphicon {
     margin-right: 10px;
 }
@@ -21,6 +50,29 @@
 
 .navbar {
     background: #224;
+}
+
+th.kanban-columnHeader {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: normal;
+    color: #779;
+}
+
+div.story {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-left: solid 5px #446;
+    background: #fff;
+    box-shadow: rgba(0,0,0,0.1) 2px 2px;
+}
+
+div.story h4 {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: #446;
 }
 
 @media (max-width: 767px) {
