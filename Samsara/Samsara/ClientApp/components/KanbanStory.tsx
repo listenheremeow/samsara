@@ -1,35 +1,15 @@
 import * as React from 'react';
-import { RouteComponentProps } from 'react-router';
 import 'isomorphic-fetch';
 
 interface KanbanStoryProps {
     id: number;
+    name: string;
+    summary: string;
 }
 
-interface KanbanColumnExampleState {
-    details: StoryDetails;
-    loading: boolean;
-}
-
-export class KanbanStory extends React.Component<KanbanStoryProps, KanbanColumnExampleState> {
-    constructor(props: KanbanStoryProps) {
-        super(props);
-
-        var emptyDetails: StoryDetails = {
-            name: '',
-            summary: ''
-        }
-
-        this.state = { details: emptyDetails, loading: true };
-        fetch(`api/Kanban/StoryDetails/${this.props.id}`)
-            .then(response => response.json() as Promise<StoryDetails>)
-            .then(data => {
-                this.setState({ details: data, loading: false });
-            });
-    }
-
+export class KanbanStory extends React.Component<KanbanStoryProps, {}> {
     public render() {
-        return KanbanStory.renderKanbanStory(this.state.details.name, this.state.details.summary);
+        return KanbanStory.renderKanbanStory(this.props.name, this.props.summary);
     }
 
     private static renderKanbanStory(name: string, summary: string) {
@@ -40,9 +20,4 @@ export class KanbanStory extends React.Component<KanbanStoryProps, KanbanColumnE
             </p>
         </div>;
     }
-}
-
-interface StoryDetails {
-    name: string;
-    summary: string;
 }

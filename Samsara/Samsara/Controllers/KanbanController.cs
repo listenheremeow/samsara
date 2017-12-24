@@ -10,7 +10,7 @@ namespace Samsara.Controllers
     {
         private static string[] Summaries = new[]
         {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+            "Stuff", "Things", "Junk", "Tasks", "Chores", "Hooplah", "Items", "Actions"
         };
 
         [HttpGet("[action]")]
@@ -23,23 +23,32 @@ namespace Samsara.Controllers
         }
 
         [HttpGet("[action]")]
-        public IEnumerable<int> Stories()
+        public IEnumerable<Story> Stories()
         {
             var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => rng.Next(0, Int32.MaxValue));
+            
+            return Enumerable.Range(1, rng.Next(3, 10)).Select(index => {
+                int id = rng.Next(0, Int32.MaxValue);
+                return new Story
+                {
+                    Id = id,
+                    Name = $"Task #{id}",
+                    Summary = Summaries[rng.Next(Summaries.Length)]
+                };
+            });
         }
 
-        [HttpGet("[action]/{id?}")]
-        public Story StoryDetails(int id)
-        {
-            var rng = new Random();
-            return new Story
-            {
-                Id = id,
-                Name = $"Task #{id}",
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            };
-        }
+        //[HttpGet("[action]/{id?}")]
+        //public Story StoryDetails(int id)
+        //{
+        //    var rng = new Random();
+        //    return new Story
+        //    {
+        //        Id = id,
+        //        Name = $"Task #{id}",
+        //        Summary = Summaries[rng.Next(Summaries.Length)]
+        //    };
+        //}
 
         public class Column
         {

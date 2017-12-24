@@ -1,14 +1,13 @@
 import * as React from 'react';
-import { RouteComponentProps } from 'react-router';
 import { KanbanStory } from './KanbanStory';
 import 'isomorphic-fetch';
 
 interface KanbanColumnProps {
-    name: string;
+    id: number;
 }
 
 interface KanbanColumnExampleState {
-    stories: number[];
+    stories: Story[];
     loading: boolean;
 }
 
@@ -18,7 +17,7 @@ export class KanbanColumn extends React.Component<KanbanColumnProps, KanbanColum
         this.state = { stories: [], loading: true };
 
         fetch('api/Kanban/Stories')
-            .then(response => response.json() as Promise<number[]>)
+            .then(response => response.json() as Promise<Story[]>)
             .then(data => {
                 this.setState({ stories: data, loading: false });
             });
@@ -27,14 +26,20 @@ export class KanbanColumn extends React.Component<KanbanColumnProps, KanbanColum
     public render() {
         let contents = this.state.loading
             ? <p><em>Loading...</em></p>
-            : KanbanColumn.renderKanbanColumn(this.props.name, this.state.stories);
+            : KanbanColumn.renderKanbanColumn(this.props.id, this.state.stories);
 
         return contents;
     }
 
-    private static renderKanbanColumn(name: string, stories: number[]) {
+    private static renderKanbanColumn(id: number, stories: Story[]) {
         return <td>
-            {stories.map(story => <KanbanStory id={story} />)}
+            {stories.map(story => <KanbanStory id={story.id} name={story.name} summary={story.summary} />)}
         </td>;
     }
+}
+
+interface Story {
+    id: number;
+    name: string;
+    summary: string;
 }

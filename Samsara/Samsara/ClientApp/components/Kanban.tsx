@@ -35,12 +35,12 @@ export class Kanban extends React.Component<RouteComponentProps<{}>, KanbanExamp
         return <table className='table'>
             <thead>
                 <tr>
-                    {columns.map(column => <th key={column.name}></th>)}
+                    {columns.map(column => <th key={column.id}>{column.name}</th>)}
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    {columns.map(column => <KanbanColumn name={column.name} />)}
+                    {columns.map(column => <KanbanColumn id={column.id} />)}
                 </tr>
             </tbody>
         </table>;
@@ -48,5 +48,6 @@ export class Kanban extends React.Component<RouteComponentProps<{}>, KanbanExamp
 }
 
 interface Column {
+    id: number;
     name: string;
 }
