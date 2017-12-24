@@ -6,7 +6,7 @@
 .main-nav li a.active,
 .main-nav li a.active:hover,
 .main-nav li a.active:focus {
-    background-color: #4189C7;
+    background-color: #446;
     color: white;
 }
 
@@ -17,6 +17,10 @@
     left: 0;
     right: 0;
     z-index: 1;
+}
+
+.navbar {
+    background: #224;
 }
 
 @media (max-width: 767px) {
