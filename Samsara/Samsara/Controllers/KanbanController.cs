@@ -38,18 +38,6 @@ namespace Samsara.Controllers
             });
         }
 
-        //[HttpGet("[action]/{id?}")]
-        //public Story StoryDetails(int id)
-        //{
-        //    var rng = new Random();
-        //    return new Story
-        //    {
-        //        Id = id,
-        //        Name = $"Task #{id}",
-        //        Summary = Summaries[rng.Next(Summaries.Length)]
-        //    };
-        //}
-
         public class Column
         {
             public string Name { get; set; }
